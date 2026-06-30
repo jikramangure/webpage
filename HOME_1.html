@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Selectors Example</title>
+</head>
+<body>
+    <!-- ID Selector -->
+    <h1 id="heading">Demon Slayer</h1>
+
+    <!-- Class Selector -->
+    <p class="text"><b>Welcome To Demon Slayer</b></p>
+    <p class="text">It is an amazing anime</p>
+
+    <!-- Tag Selector -->
+    <h4>My Favorite Character</h4>
+    <h5><b>Zenitsu Agatsuma</b></h5>
+
+    <!-- querySelector -->
+    <p class="message">Zenitsu Agatsuma is a popular fictional character from the anime and manga series Zenitsu Agatsuma in the series Demon Slayer: Kimetsu no Yaiba.</p>
+    
+
+    <!-- querySelectorAll -->
+    <ul>
+        <li class="Ch">Tanjiro Kamado</li>
+        <li class="Ch">Nezuko Kamado</li>
+        <li class="Ch">Inosuke</li>
+    </ul>
+
+    <button onclick="changeContent()">
+        Click Me
+    </button>
+
+    <script>
+
+        function changeContent() {
+
+            // 1. getElementById()
+            document.getElementById("heading").innerHTML =
+                "Harry Poter";
+
+
+            // 2. getElementsByClassName()
+            document.getElementsByClassName("text")[0].innerHTML =
+                "Welcome To Harry Poter";
+
+            document.getElementsByClassName("text")[1].innerHTML =
+                "It is a wonderfull movie";
+
+
+            // 3. getElementsByTagName()
+            document.getElementsByTagName("h4")[0].innerHTML =
+                "Main Character";
+
+            document.getElementsByTagName("h5")[0].innerHTML =
+                "Harry James Poter";
+
+
+            // 4. querySelector()
+            document.querySelector(".message").innerHTML =
+                "Harry Potter is a fictional character and the protagonist of the Harry Potter series of novels by J. K. Rowling.";
+        
+
+            // 5. querySelectorAll()
+            let Ch =
+                document.querySelectorAll(".Ch");
+
+            Ch[0].innerHTML = "Harry Potter";
+            Ch[1].innerHTML = "Ron Weasley";
+            Ch[2].innerHTML = "Hermione Granger";
+        }
+
+    </script>
+
+</body>
+</html>

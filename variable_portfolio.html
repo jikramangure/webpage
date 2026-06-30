@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portfolio Website</title>
+
+    <style>
+        :root{
+            --bg-color:#4d585e;
+            --box-color:#c2c0b5;
+            --heading-color:#57686c;
+            --button-color:rgb(52,114,172);
+        }
+
+        body{
+            background-color:var(--bg-color);
+            margin:20px;
+        }
+
+        .header{
+            text-align:center;
+            padding:20px;
+            background-color:var(--heading-color);
+            border-radius:10px;
+        }
+
+        .header h1,
+        .header h2,
+        .header p{
+            color:rgb(42, 41, 41);
+        }
+
+        .profile-pic{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            border:3px solid white;
+        }
+
+        fieldset{
+            background-color:var(--box-color);
+            padding:15px;
+            margin-bottom:15px;
+        }
+
+        table{
+            border-collapse:collapse;
+        }
+
+        table, th, td{
+            border:1px solid black;
+            padding:10px;
+        }
+
+        .input-field{
+            width:250px;
+        }
+
+        .submit-btn{
+            background-color:var(--button-color);
+            color:white;
+            padding:8px 15px;
+            border:none;
+            cursor:pointer;
+        }
+
+        .submit-btn:hover{
+            opacity:0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>My Portfolio</h1>
+
+        <img src="Pimage.jpeg" alt="Profile Photo" class="profile-pic">
+
+        <h2>Jikra Mangure</h2>
+        <p><b>Web Development Student</b></p>
+    </div>
+
+    <br>
+
+    <fieldset>
+        <div><b>About Me</b></div>
+        <p>
+            Hello! My name is Jikra Mangure. I am a BCA 2nd Year student learning HTML,
+            web development, and new technologies. I enjoy creating websites
+            and improving my programming skills.
+        </p>
+    </fieldset>
+
+    <fieldset>
+        <div><b>Skills</b></div>
+        <ul>
+            <li>HTML</li>
+            <li>Basic CSS</li>
+            <li>Communication</li>
+            <li>Problem Solving</li>
+        </ul>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <div><b>Education</b></div>
+
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>College</th>
+            </tr>
+            <tr>
+                <td>BCA</td>
+                <td>Gurware College</td>
+            </tr>
+        </table>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <div><b>Projects</b></div>
+
+        <ol>
+            <li>Portfolio Website</li>
+            <li>Student ID Card</li>
+            <li>News Website</li>
+            <li>School Timetable</li>
+        </ol>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <div><b>Contact Me</b></div>
+
+        <form>
+            <label>Name:</label><br>
+            <input type="text" class="input-field"><br><br>
+
+            <label>Email:</label><br>
+            <input type="email" class="input-field"><br><br>
+
+            <label>Message:</label><br>
+            <textarea rows="4" cols="30"></textarea><br><br>
+
+            <input type="submit" value="Send Message" class="submit-btn">
+        </form>
+    </fieldset>
+
+</body>
+</html>

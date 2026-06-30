@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>variable Example</title>
+<style>
+.root{
+    --text-color:rgb(242, 236, 236);
+    --font-size:20px ;
+}
+.box{
+    --box-color:rgb(176, 26, 41);
+
+    color:var(--text-color);
+    font-size:var(--font-size);
+    background-color: var(--box-color);
+    padding: 30px;
+
+}
+
+.boxes{
+    color:var(--text-color);
+    --box-color:rgb(145, 216, 74);
+    background-color: var(--box-color,rgb(161, 146, 146));
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+    
+    <div class="box">
+        Hii
+    </div>
+    <div class="boxes">
+        
+        well come to Css
+    </div>
+    <div class="box">
+        CSS Variables
+    </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasty Bites Restaurant</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        .hero {
+            background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200')
+            center/cover no-repeat;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            background: rgba(0,0,0,0.6);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .food-card img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        footer a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🍽 Tasty Bites</a>
+
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><b>Home</b></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><b>About</b></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu-items"><b>Menu</b></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><b>Contact</b></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="display-4 fw-bold">Welcome to Tasty Bites</h1>
+            <p class="lead">Delicious Food & Great Taste</p>
+            <a href="#menu-items" class="btn btn-warning btn-lg">
+                Explore Menu
+            </a>
+        </div>
+    </section>
+
+
+    <section id="about" class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800"
+                class="img-fluid rounded shadow"
+                alt="Restaurant">
+            </div>
+
+            <div class="col-md-6">
+                <h2>About Us</h2>
+                <p>
+                    Tasty Bites Restaurant offers fresh ingredients,
+                    delicious recipes, and a memorable dining experience.
+                    We serve a variety of cuisines prepared by expert chefs.
+                </p>
+
+                <p>
+                    Our mission is to provide quality food and excellent
+                    service to every customer.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="menu-items" class="container py-5">
+        <h2 class="text-center mb-4">Popular Dishes</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card food-card shadow">
+                    <img src="https://www.shutterstock.com/image-photo/slice-hot-italian-pizza-stretching-600w-2187863121.jpg"
+                    class="card-img-top" alt="Pizza">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Cheese Pizza</h5>
+                        <p class="card-text">
+                            Freshly baked pizza topped with extra cheese.
+                        </p>
+                        <h4 class="text-success">₹299</h4>
+                        <a href="#" class="btn btn-warning">Order Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card food-card shadow">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800"
+                    class="card-img-top" alt="Burger">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Chicken Burger</h5>
+                        <p class="card-text">
+                            Juicy chicken burger with crispy fries.
+                        </p>
+                        <h4 class="text-success">₹499</h4>
+                        <a href="#" class="btn btn-warning">Order Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card food-card shadow">
+                    <img src="https://saltedmint.com/wp-content/uploads/2023/04/Healthy-creamy-mushroom-pasta-with-cheese.jpg"
+                    class="card-img-top" alt="Pasta">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Creamy Pasta</h5>
+                        <p class="card-text">
+                            Rich and creamy pasta with special herbs.
+                        </p>
+                        <h4 class="text-success">₹399</h4>
+                        <a href="#" class="btn btn-warning">Order Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer id="contact" class="bg-dark text-white text-center py-4">
+        <h4>Tasty Bites Restaurant</h4>
+
+        <div class="mb-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+
+        <p class="mb-0">
+            © 2026 Tasty Bites Restaurant. All Rights Reserved.
+        </p>
+    </footer>
+
+    
+</body>
+</html>

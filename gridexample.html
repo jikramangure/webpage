@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grid Example</title>
+    <style>
+        .container{
+            display:grid;
+            grid-template-columns:repeat(2, 1fr);  
+            gap:20px;
+            padding:20px;
+            border:2px solid black;
+            
+        }
+
+        .item{
+            background-color:rgb(167, 133, 150);
+            border:1px solid rgb(28, 27, 27);
+            padding:20px;
+            text-align:center;
+            font-size:30px;
+            border-radius:20px;
+            
+        
+
+        }
+        .item img{
+            width:70%;    
+            height:100%;  
+            object-fit:cover;   
+        }
+            
+            
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="item">
+            <img src="flower1.jpg" alt="Flower">
+        </div>
+        <div class="item">
+            <img src="flower2.jpg" alt="Flower">
+        </div>
+        <div class="item">
+            <img src="flower3.jpg" alt="Flower">
+        </div>
+        <div class="item">
+            <img src="flower4.avif" alt="Flower">
+        </div>
+    </div>
+
+</body>
+</html> 
