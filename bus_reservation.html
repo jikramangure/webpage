@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkYatra - Premium Bus Booking</title>
+    <style>
+    
+        :root {
+            --bg-main: #0f172a;       
+            --bg-card: #1e293b;        
+            --bg-input: #334155;       
+            --primary-glow: #3b82f6;   
+            --primary-hover: #2563eb;
+            --accent-success: #10b981; 
+            --accent-error: #f43f5e;   
+            --text-main: #f8fafc;     
+            --text-muted: #94a3b8;    
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            border-bottom: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Banner Image Section */
+        .hero-banner {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), var(--bg-main)), 
+                        url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=1200') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 4rem auto; 
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2.5rem;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            align-items: flex-end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            padding: 0.85rem;
+            background-color: var(--bg-input);
+            border: 1px solid #475569;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: white;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-search {
+            background: linear-gradient(135deg, var(--primary-glow), var(--primary-hover));
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-search:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+
+        .booking-area {
+            display: none;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .booking-area {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .seat-selection {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+
+        .bus-layout {
+            border: 2px dashed #475569;
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            max-width: 320px;
+            margin: 0 auto;
+            background: #131c2e;
+        }
+
+        .driver-space {
+            text-align: right;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .seats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            row-gap: 1.5rem;
+        }
+
+    
+        .seats-grid div:nth-child(4n+2) {
+            margin-right: 1.8rem;
+        }
+
+        .seat {
+            height: 42px;
+            background-color: #475569;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s;
+            user-select: none;
+            color: #cbd5e1;
+            border-bottom: 4px solid #334155;
+        }
+
+        .seat:hover:not(.booked) {
+            background-color: #64748b;
+            transform: scale(1.05);
+        }
+
+        .seat.selected {
+            background-color: var(--accent-success);
+            color: #0f172a;
+            border-color: #059669;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+        }
+
+        .seat.booked {
+            background-color: var(--accent-error);
+            color: white;
+            border-color: #e11d48;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+    
+        .legend {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+
+        .checkout-box {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .summary-details p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #334155;
+            padding-bottom: 0.5rem;
+        }
+
+        .summary-details span {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .summary-details p strong {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .price-highlight {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-success);
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #0f172a;
+            border: none;
+            padding: 1.1rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-book:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+            color: white;
+        }
+
+        .btn-book:disabled {
+            background: #334155;
+            color: #64748b;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&q=80&w=100" alt="Logo" class="logo-img">
+            <div class="logo-text">SafarX</div>
+        </div>
+        <div style="color: var(--text-muted); font-weight: 500;">Premium Luxury Travel</div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="hero-text">
+            <h1>Explore the World Comfortably</h1>
+            <p>Book your premium luxury seats in just a few clicks.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <section class="search-section">
+            <form class="search-form" id="searchForm">
+                <div class="form-group">
+                    <label for="from">From</label>
+                    <input type="text" id="from" placeholder="e.g. Mumbai" required value="Mumbai">
+                </div>
+                <div class="form-group">
+                    <label for="to">To</label>
+                    <input type="text" id="to" placeholder="e.g. Goa" required value="Goa">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date of Journey</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="btn-search">Search Buses</button>
+            </form>
+        </section>
+
+        <section class="booking-area" id="bookingArea">
+            
+            <div class="seat-selection">
+                <h3 style="margin-bottom: 1.5rem; font-weight: 700; letter-spacing: 0.5px;">Select Your Seats</h3>
+                <div class="bus-layout">
+                    <div class="driver-space">Driver 🛞</div>
+                    <div class="seats-grid" id="seatsGrid">
+                        </div>
+                </div>
+                
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-box" style="background-color: #475569;"></div> Available
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background-color: var(--accent-success);"></div> Selected
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box" style="background-color: var(--accent-error);"></div> Booked
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-box">
+                <div>
+                    <h3 style="margin-bottom: 2rem; font-weight: 700; letter-spacing: 0.5px;">Booking Summary</h3>
+                    <div class="summary-details">
+                        <p><strong>Route</strong> <span id="summaryRoute">---</span></p>
+                        <p><strong>Date</strong> <span id="summaryDate">---</span></p>
+                        <p><strong>Selected Seats</strong> <span id="selectedSeatsList" style="color: var(--primary-glow);">None</span></p>
+                        <p style="border: none; margin-top: 2rem; align-items: center;">
+                            <strong style="font-size: 1.2rem; color: white;">Total Fare:</strong> 
+                            <span class="price-highlight">₹<span id="totalPrice">0</span></span>
+                        </p>
+                    </div>
+                </div>
+                <button class="btn-book" id="bookBtn" disabled>Proceed to Pay</button>
+            </div>
+
+        </section>
+    </div>
+
+    <script>
+    
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        document.getElementById('date').value = tomorrow.toISOString().split('T')[0];
+
+        const searchForm = document.getElementById('searchForm');
+        const bookingArea = document.getElementById('bookingArea');
+        const seatsGrid = document.getElementById('seatsGrid');
+        const bookBtn = document.getElementById('bookBtn');
+
+        const ticketPrice = 750; 
+        let selectedSeats = [];
+
+        
+        const bookedSeats = [2, 5, 11, 16, 19]; 
+
+    
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            const date = document.getElementById('date').value;
+
+            document.getElementById('summaryRoute').innerText = `${from} ➔ ${to}`;
+            document.getElementById('summaryDate').innerText = date;
+
+            selectedSeats = [];
+            updateCheckout();
+            renderSeats();
+
+            bookingArea.style.display = 'grid';
+            bookingArea.scrollIntoView({ behavior: 'smooth' });
+        });
+
+    
+        function renderSeats() {
+            seatsGrid.innerHTML = '';
+            const totalSeats = 24;
+
+            for (let i = 1; i <= totalSeats; i++) {
+                const seat = document.createElement('div');
+                seat.classList.add('seat');
+                seat.innerText = i;
+
+                if (bookedSeats.includes(i)) {
+                    seat.classList.add('booked');
+                } else {
+                    seat.addEventListener('click', () => toggleSeatSelection(seat, i));
+                }
+
+                seatsGrid.appendChild(seat);
+            }
+        }
+
+        
+        function toggleSeatSelection(seatElement, seatNumber) {
+            if (selectedSeats.includes(seatNumber)) {
+                selectedSeats = selectedSeats.filter(id => id !== seatNumber);
+                seatElement.classList.remove('selected');
+            } else {
+                selectedSeats.push(seatNumber);
+                seatElement.classList.add('selected');
+            }
+            updateCheckout();
+        }
+
+    
+        function updateCheckout() {
+            if (selectedSeats.length > 0) {
+                document.getElementById('selectedSeatsList').innerText = selectedSeats.sort((a,b)=>a-b).join(', ');
+                document.getElementById('totalPrice').innerText = selectedSeats.length * ticketPrice;
+                bookBtn.disabled = false;
+            } else {
+                document.getElementById('selectedSeatsList').innerText = 'None';
+                document.getElementById('totalPrice').innerText = '0';
+                bookBtn.disabled = true;
+            }
+        }
+
+    
+        bookBtn.addEventListener('click', () => {
+            alert(`🎟️ Booking Confirmed!\nSeats: ${selectedSeats.join(', ')}\nTotal Paid: ₹${selectedSeats.length * ticketPrice}\nHave a safe journey!`);
+            location.reload();
+        });
+    </script>
+</body>
+</html>
